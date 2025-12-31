@@ -111,7 +111,7 @@
 
 \textbf{Instructions.} Solutions must be submitted to Gradescope as a single PDF. Programming exercises must be completed in R, should be clearly presented, and include all R code. Lab questions are restated here for convenience, but you should refer to the lab itself for details.
 
-\textbf{Total points.} Book exercises: 15; Lab exercises 7; Overall: 22.
+\textbf{Points.} Book exercises (18) + lab exercises (7) = 25 points total.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -131,15 +131,20 @@
 \item (1 point) You reach in and select one coin at random and throw it in the air and get heads. What is the probability that it is the fake coin?
 \end{enumerate}
 
-\item (Slight variation of Hoff 2.1) The social mobility data from Section 2.5 in Hoff gives a joint probability distribution on $(Y_1,Y_2) =$ (father's occupation, son's occupation). Using this joint distribution, calculate the following distributions:
+\item (Variation of Hoff 2.1) The social mobility data from Section 2.5 in Hoff gives a joint probability distribution on $(\theta,Y) =$ (father's occupation, son's occupation); note that Hoff uses $(Y_1,Y_2)$ instead of $(\theta,Y)$, but we will use $\theta$ and $Y$ to suggest a more ``Bayesian" perspective where the father's occupation, $\theta$, is regarded as the unknown parameter of interest, and the son's occupation, $Y$, is the data. Using this joint distribution, calculate the following:
 
 \vspace*{1em}
 
 \begin{enumerate}[label=(\alph*), leftmargin=1em, itemsep=1em]
+\item (1 point) The marginal probability that the father is a farmer.
 \item (1 point) The marginal probability that the father is in sales.
-%\item (1 point) The marginal probability that the son is in sales.
-\item (1 point) The probability that the son is a farmer, given that the father is in sales.
-\item (1 point) The probability that the father is a farmer, given that the son is in sales.
+\item (1 point) The probability that the son is in sales, given that the father is a farmer.
+\item (1 point) The probability that the son is in sales, given that the father is in sales.
+\item (1 point) Use your previous answers to compute the \textit{posterior odds ratio}
+\begin{align*}
+\frac{\mathbb{P}(\theta = \text{farmer} \mid y = \text{sales})}{\mathbb{P}(\theta = \text{sales} \mid y = \text{sales})}\,. 
+\end{align*}
+\item (1 point) Describe in words your solution to part (e). What role does $p(y = \text{sales})$, the marginal probability that the son is in sales, play in your answer?
 \end{enumerate}
 
 \item Hoff 2.3
@@ -153,6 +158,8 @@
 \end{enumerate}
 
 \item (5 points) Hoff 2.6
+
+\vspace*{1em}
 
 %\item (3 points) Show that the posterior variance of the beta--binomial model can be written as
 %\begin{align*}
