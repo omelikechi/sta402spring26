@@ -1,5 +1,5 @@
 ---
-title: "STA402L, Lab 1: R review"
+title: "Lab 1: R review"
 output:
   pdf_document:
     toc: false
@@ -20,16 +20,13 @@ knitr::opts_chunk$set(eval = FALSE)
 
 **Due:** 11:59pm, Wednesday, January 21
 
+## Turning in solutions
 
-# Housekeeping
+This lab is part of Homework 1. Your solutions to this lab's exercises, together with the non-lab homework exercises, are to be uploaded to Gradescope as a PDF.
 
 ## R/RStudio
 
 You should have R and RStudio installed on your computers. If not, first install the latest version of R here: https://cran.rstudio.com (remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the "Installers for Supported Platforms" section and find the right installer for your operating system.
-
-## Turning in solutions
-
-This lab is part of Homework 1. Solutions to the exercises, as well as the non-lab homework exercises are to be written up and uploaded to Gradescope as a PDF.
 
 # Getting started
 
