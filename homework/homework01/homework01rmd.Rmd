@@ -1,0 +1,62 @@
+---
+title: "Homework 1"
+date: 'Due: 11:59pm, Friday, February 12'
+output:
+  pdf_document:
+    toc: false
+  html_document:
+    css: hw.css
+    theme: yeti
+    toc: false
+    fig_caption: false
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+---
+
+## Instructions
+
+Please make sure your final output file is a pdf document. You can submit handwritten solutions for non-programming exercises or type them using R Markdown, LaTeX, or any other word processor. All programming exercises must be done in R, typed up clearly, and with all code attached. Submissions should be made on Gradescope.
+
+## Questions
+
+1. There are three coins in a bag; two fair coins (probability of heads = probability of tails) and one fake coin (probability of heads = 1). 
+    + <font color="green">**Part (a):**</font> You reach in and select one coin at random and throw it in the air. What is the probability that it lands on heads?  
+    <font color="blue">**(1 point)**</font>
+    + <font color="green">**Part (b):**</font> You reach in and select one coin at random and throw it in the air and get heads. What is the probability that it is the fake coin?  
+    <font color="blue">**(1.5 points)**</font>
+    
+2. Hoff 2.3
+    + <font color="blue">**Part (a): 2 points**</font>
+    + <font color="blue">**Part (b): 2 points**</font>
+    + <font color="blue">**Part (c): 1 point**</font>
+
+3. Show that the posterior variance of the beta-binomial model can be written as
+$$\mathbb{V}(\theta | y) = \dfrac{\mathbb{E}(\theta | y)\mathbb{E}(1-\theta | y)}{a+b+n+1}.$$  
+<font color="blue">**(2.5 points)**</font>
+
+    
+4. Hoff 3.1. 
+    + <font color="blue">**Part (a): 0.5 points**</font>
+    + <font color="blue">**Part (b): 1 point**</font>
+    + <font color="blue">**Part (c): 1 point**</font>
+    + <font color="blue">**Part (d): 1.5 points**</font>
+    + <font color="blue">**Part (e): 2 points**</font>
+
+    <font color="red">*Don't work out part (a), just say what the correct sampling distribution is (you should already know) and move on to the remaining parts.*</font>
+
+5. Using the inverse cdf method, generate 1,000 random realizations from the Beta(5,10) distribution truncated to the interval (0.4,0.75).
+    + <font color="green">**Part (a):**</font>  What is the mean of your random draws (rounded to 2 decimal places)?  
+    <font color="blue">**(0.5 points)**</font>
+    + <font color="green">**Part (b):**</font>  What is the variance of your random draws (rounded to 4 decimal places)?  
+    <font color="blue">**(0.5 points)**</font>
+
+6. <font color="green">Continuation of the "new agent" example from class</font>. For each of the priors (that is, <font color="red">Beta(1,666)</font>, <font color="red">Beta(0.05,33.33)</font>, <font color="red">Beta(1.6, 407.4)</font>, <font color="red">Beta(1.05, 497)</font>, and <font color="red">Unif(0,0.1)</font>), how many trials would we need, assuming no adverse reactions, to be 95% sure that the new agent is as safe as (or safer than) the old one? That is, what value of $n$ is required to ensure that $\Pr(\theta_N \leq 0.0015| y) = 0.95$?  
+<font color="blue">**(3 points)**</font>
+
+    <font color="red">*Feel free to derive this by hand but you can save some time by doing it in R.*</font>
+
+## Grading
+
+Total: 20 points.
+  

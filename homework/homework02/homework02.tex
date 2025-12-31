@@ -1,0 +1,161 @@
+\documentclass[11pt,oneside,reqno]{amsart}
+
+% packages
+\usepackage{algorithm, algpseudocode, amsfonts, amssymb, amsthm, amsmath, array, authblk, bm, braket, caption, changepage, comment, dsfont, enumitem, etoolbox, fullpage, graphicx, mathrsfs, mathtools, microtype, multicol, pifont, pythonhighlight, relsize, subfig, subfloat, textcomp, tikz, tikz-cd, url, xpatch}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	citecolor=black,
+	urlcolor=blue}
+\usepackage[noabbrev,capitalise]{cleveref}
+\creflabelformat{equation}{#2\textup{#1}#3}
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+\numberwithin{equation}{section}
+
+%\usepackage[round]{natbib}
+
+% format
+\setlength\parindent{0pt}
+\setlength{\parskip}{\baselineskip}
+\setlist[enumerate]{itemsep=1ex, topsep=-1ex}
+\setlist[itemize]{itemsep=0pt, topsep=0pt, leftmargin=20pt}
+
+% footnotes
+%\usepackage[hang,flushmargin]{footmisc}
+\usepackage[foot]{amsaddr}
+
+% font
+%\usepackage[T1]{fontenc}
+%\usepackage{newpxtext} \usepackage[euler-digits]{eulervm}
+%\usepackage[euler-digits]{eulervm}
+%\usepackage{mathpazo}
+
+% sections
+\usepackage{titlesec}
+
+\titleformat{\section}
+	{\titlerule\vspace{-2ex}}
+	{\thesection.}{1ex}{\centering\scshape}
+	[\vspace{.5ex}\titlerule]
+	
+\titleformat{\subsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsection.}{1ex}{}	
+\titlespacing*{\subsection}{0pt}{0.0\baselineskip}{0.5ex}
+
+% theorems
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheoremstyle{style}
+  {\baselineskip} % Space above
+  {0em} % Space below
+  {\itshape} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{style}
+
+\newtheorem*{theorem*}{Theorem}
+
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}
+\newtheorem{condition}{Condition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{fig}{Figure}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+
+\crefname{condition}{Condition}{Conditions}
+
+% proofs
+\newcommand{\QED}{\tag*{\qed}}
+
+% algorithms
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+
+% lists
+\setlist[itemize]{itemsep=0.5em, left=0.5em}
+
+% notation
+% \DeclareMathOperator{shorthand}{expression}
+\DeclareMathOperator{\1}{\mathds{1}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\iid}{\overset{\mathrm{iid}}{\sim}}
+\newcommand{\var}{\text{Var}}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+%-------------------------------------------------------------------
+
+\title{{\large {\Large S}TA402L: {\Large H}omework 2}}
+\author{{\large Due: 11:59 pm on XXX}}
+
+\begin{document}
+
+\frenchspacing
+
+\maketitle
+
+\textbf{Instructions.} Solutions must be submitted to Gradescope as a single PDF. Programming exercises must be completed in R, should be clearly presented, and include all R code. Lab questions are restated here for convenience, but you should refer to the lab itself for details.
+
+\textbf{Total points.} Book exercises: XXX; Lab exercises XXX; Overall: XXX.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Book exercises}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}[label=B\arabic*., leftmargin=2em, itemsep=2em]
+
+\item (3 points) Show that the posterior variance of the beta--binomial model can be written as
+\begin{align*}
+\var(\theta \mid y) &= \frac{\mathbb{E}(\theta \mid y)\,\mathbb{E}(1-\theta \mid y)}{a+b+n+1}\,.
+\end{align*}
+
+
+\item Hoff 3.1.
+
+\vspace*{1em}
+
+\begin{enumerate}[label=(\alph*), leftmargin=1em, itemsep=1em]
+\item (1 point)
+\item (1 point)
+\item (1 point)
+\item (1 point)
+\item (2 points)
+\end{enumerate}
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Lab exercises}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}[label=L\arabic*., leftmargin=2em, itemsep=2em]
+
+\item (1 point) Plot a histogram of $\theta$ from the \texttt{rstan} object called \texttt{pool\_output}. Describe the distribution.
+
+\item Visualize the posterior distributions of the $\theta_i$ with boxplots. In the plot, there should be one box and whiskers object for each $\theta_i$.
+
+\item Take a few minutes to look at the contents of the two files \texttt{lab-02-pool.stan} and \texttt{lab-02-nopool.stan}. How are they different?
+\end{enumerate}
+
+\end{document}
+
+

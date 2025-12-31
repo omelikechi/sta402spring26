@@ -1,0 +1,164 @@
+\documentclass[12pt,oneside,reqno]{amsart}
+
+% packages
+\usepackage{algorithm, algpseudocode, amsfonts, amssymb, amsthm, amsmath, array, authblk, bm, braket, caption, changepage, comment, dsfont, enumitem, etoolbox, fullpage, graphicx, mathrsfs, mathtools, microtype, multicol, pifont, pythonhighlight, relsize, subfig, subfloat, textcomp, tikz, tikz-cd, url, xpatch}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	citecolor=black,
+	urlcolor=blue}
+\usepackage[noabbrev,capitalise]{cleveref}
+\creflabelformat{equation}{#2\textup{#1}#3}
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+\numberwithin{equation}{section}
+
+%\usepackage[round]{natbib}
+
+% format
+\setlength\parindent{0pt}
+\setlength{\parskip}{\baselineskip}
+\setlist[enumerate]{itemsep=1ex, topsep=-1ex}
+\setlist[itemize]{itemsep=0pt, topsep=0pt, leftmargin=20pt}
+
+% footnotes
+%\usepackage[hang,flushmargin]{footmisc}
+\usepackage[foot]{amsaddr}
+
+% font
+%\usepackage[T1]{fontenc}
+%\usepackage{newpxtext} \usepackage[euler-digits]{eulervm}
+%\usepackage[euler-digits]{eulervm}
+%\usepackage{mathpazo}
+
+% sections
+\usepackage{titlesec}
+
+\titleformat{\section}
+	{\titlerule\vspace{-2ex}}
+	{\thesection.}{1ex}{\centering\scshape}
+	[\vspace{.5ex}\titlerule]
+	
+\titleformat{\subsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsection.}{1ex}{}	
+\titlespacing*{\subsection}{0pt}{0.0\baselineskip}{0.5ex}
+
+% theorems
+\newtheorem{theorem}{Theorem}[section]
+
+\newtheoremstyle{style}
+  {\baselineskip} % Space above
+  {0em} % Space below
+  {\itshape} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{style}
+
+\newtheorem*{theorem*}{Theorem}
+
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}
+\newtheorem{condition}{Condition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{fig}{Figure}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+
+\crefname{condition}{Condition}{Conditions}
+
+% proofs
+\newcommand{\QED}{\tag*{\qed}}
+
+% algorithms
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+
+% lists
+\setlist[itemize]{itemsep=0.5em, left=0.5em}
+
+% notation
+% \DeclareMathOperator{shorthand}{expression}
+\DeclareMathOperator{\1}{\mathds{1}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\iid}{\overset{\mathrm{iid}}{\sim}}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+%-------------------------------------------------------------------
+
+\title{{\Large {\LARGE S}TA402L: {\LARGE B}ayesian Modeling}}
+\author{{\large D}uke {\large U}niversity, {\large S}pring {\large 2026}}
+
+\begin{document}
+
+\frenchspacing
+
+\maketitle
+
+{\large\textbf{People}}
+\begin{table}[ht]
+\raggedright
+\renewcommand{\arraystretch}{1.5}      % Controls vertical row spacing
+\setlength{\arrayrulewidth}{1pt}     % Controls line thickness
+
+\begin{tabular}{p{2cm} p{3cm} p{4cm} p{3cm} p{2.5cm}}
+\hline
+\textbf{Role} & \textbf{Name} & \textbf{Contact} & \textbf{Office Hours} & \textbf{Location} \\
+\hline
+Instructor & Omar Melikechi & oem2@duke.edu &  & Old Chem 122 \\
+TA & Yihao Gu & yihao.gu@duke.edu &  &  \\
+TA & Sonya Eason & sonya.eason@duke.edu &  &  \\
+\hline
+\end{tabular}
+\end{table}
+
+%\vspace*{1em}
+
+{\large\textbf{Schedule}}
+\begin{table}[ht]
+\raggedright
+\renewcommand{\arraystretch}{1.5}      % Controls vertical row spacing
+\setlength{\arrayrulewidth}{1pt}     % Controls line thickness
+
+\begin{tabular}{p{2.5cm} p{2cm} p{4cm} p{3.5cm}}
+\hline
+ & \textbf{Day} & \textbf{Time} & \textbf{Location} \\
+\hline
+Lectures & Wed/Fri & 11:45am -- 1:00pm & Old Chem 116 \\
+Lab 1 & Thu & 1:25pm -- 2:40pm & Old Chem 101 \\
+Lab 2 & Thu & 3:05pm -- 4:20pm & Old Chem 101 \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace*{1em}
+
+\textbf{Required textbook.} ``\href{https://pdhoff.github.io/book/}{\textit{A first course in Bayesian statistical methods}}" by Peter Hoff. Duke students can download an electronic version for free from Duke Library.
+
+\textbf{Optional textbook.} ``\href{https://sites.stat.columbia.edu/gelman/book/}{\textit{Bayesian data analysis}}'' by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin.
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+

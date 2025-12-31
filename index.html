@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+		<meta charset='utf-8'>
+		<title>STA402L: Bayesian modeling (Spring 2026)</title>
+		<style>
+				/* ----- Overall page layout ----- */
+				body {
+						font-family: Arial, sans-serif;  /* clean sans-serif font */
+						max-width: 900px;                /* limit line width for readability */
+						margin: 40px auto;               /* center content horizontally */
+						line-height: 1.6;                /* comfortable text spacing */
+				}
+
+				/* ----- Page header ----- */
+				header {
+						text-align: center;              /* center title and subtitle */
+						margin-bottom: 30px;
+				}
+
+				/* ----- Navigation bar ----- */
+				nav {
+						text-align: center;
+						margin-bottom: 25px;
+				}
+				nav a {
+						margin: 0 10px;                 /* space links apart */
+						text-decoration: none;          /* remove underlines */
+						color: #0047ab;                 /* Duke blue */
+				}
+				nav a:hover {
+						text-decoration: underline;     /* underline on hover */
+				}
+
+				/* ----- Headings ----- */
+				h2 {
+						margin-top: 40px;
+				}
+
+				/* ----- Table styling ----- */
+				table {
+						width: 100%;
+						border-collapse: collapse;      /* merge cell borders */
+						margin-top: 25px;
+				}
+				th, td {
+						border: 1px solid #ccc;         /* light gray border */
+						padding: 6px 10px;              /* even spacing */
+						text-align: left;
+				}
+				th {
+						background: #f2f2f2;            /* slightly shaded header row */
+				}
+				tr:nth-child(even) {
+						background: #fafafa;            /* alternate row shading */
+				}
+
+				/* ----- Link styling ----- */
+				a {
+						color: #0047ab;                 /* Duke blue for links */
+						text-decoration: none;
+				}
+				a:hover {
+						text-decoration: underline;
+				}
+		</style>
+</head>
+<body>
+
+		<!-- Course title and basic info -->
+		<header>
+				<h1>STA402L: Bayesian modeling (Spring 2026)</h1>
+				<p>Duke University</p>
+		</header>
+
+		<!-- Navigation bar -->
+		<nav>
+				<a href="index.html">Home</a> |
+				<a href="syllabus/syllabus.pdf" target="_blank">Syllabus</a>
+		</nav>
+
+		<!-- Welcome blurb -->
+		<h2>Welcome</h2>
+		<p>Instructor: Omar Melikechi</p>
+
+		<!-- Course schedule table -->
+		<h2>Schedule</h2>
+		<table>
+				<thead>
+						<tr>
+								<th>Date</th>
+								<th>Topic</th>
+								<th>Reading</th>
+								<th>Notes</th>
+								<th>New</th>
+								<th>Due</th>
+						</tr>
+				</thead>
+
+				<tbody>
+
+				      <!-- Week 1 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Jan 7</td>
+				        <td>No class</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Jan 8</td>
+				        <td>Lab 1: Intro to R</td>
+				        <td></td>
+				        <td></td>
+				        <td><a href="homework/homework01/homework01.pdf" target="_blank">Homework 1</a></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Jan 9</td>
+				        <td>Course overview</td>
+				        <td>Chapter 1</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 2 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Jan 14</td>
+				        <td>Probability review</td>
+				        <td>Chapter 2</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Jan 15</td>
+				        <td>Lab 2: Beta-binomial</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Jan 16</td>
+				        <td>Probability review</td>
+				        <td>Chapter 2</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 3 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Jan 21</td>
+				        <td>One-parameter models</td>
+				        <td>Chapter 3</td>
+				        <td></td>
+				        <!-- <td><a href="homework/homework02/homework02.pdf" target="_blank">Homework 2</a></td> -->
+				        <td>Homework 2</td>
+				        <td>Homework 1</td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Jan 22</td>
+				        <td>Lab 3: Poisson</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Jan 23</td>
+				        <td>One-parameter models</td>
+				        <td>Chapter 3</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 4 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Jan 28</td>
+				        <td>One-parameter models</td>
+				        <td>Chapter 3</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Jan 29</td>
+				        <td>Lab 4: Prior selection</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Jan 30</td>
+				        <td>Monte Carlo</td>
+				        <td>Chapter 4</td>
+				        <td></td>
+				        <td><a href="homework/homework03/homework03.pdf" target="_blank">Homework 3</a></td>
+				        <td>Homework 2</td>
+				      </tr>
+
+				      <!-- Week 5 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Feb 4</td>
+				        <td>Monte Carlo</td>
+				        <td>Chapter 4</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Feb 5</td>
+				        <td>Lab 5: Truncated data</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Feb 6</td>
+				        <td>Monte Carlo</td>
+				        <td>Chapter 4</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 6 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Feb 11</td>
+				        <td>Review</td>
+				        <td></td>
+				        <td></td>
+				        <td><a href="homework/homework04/homework04.pdf" target="_blank">Homework 4</a></td>
+				        <td>Homework 3</td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Feb 12</td>
+				        <td>Review</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Feb 13</td>
+				        <td>Midterm 1</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 7 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Feb 18</td>
+				        <td>Normal model</td>
+				        <td>Chapter 5</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Feb 19</td>
+				        <td>Lab 7: HMC</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Feb 20</td>
+				        <td>Normal model</td>
+				        <td>Chapter 5</td>
+				        <td></td>
+				        <td><a href="homework/homework05/homework05.pdf" target="_blank">Homework 5</a></td>
+				        <td>Homework 4</td>
+				      </tr>
+
+				      <!-- Week 8 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Feb 25</td>
+				        <td>Normal model</td>
+				        <td>Chapter 5</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Feb 26</td>
+				        <td>Lab 8: Hierarchical models</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Feb 27</td>
+				        <td>Gibbs sampling</td>
+				        <td>Chapter 6</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 9 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Mar 4</td>
+				        <td>Gibbs sampling</td>
+				        <td>Chapter 6</td>
+				        <td></td>
+				        <td><a href="homework/homework06/homework06.pdf" target="_blank">Homework 6</a></td>
+				        <td>Homework 5</td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Mar 5</td>
+				        <td>Lab 9: Linear regression</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Mar 6</td>
+				        <td>Gibbs sampling</td>
+				        <td>Chapter 6</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 10 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Mar 11</td>
+				        <td>Spring break</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Mar 12</td>
+				        <td>Spring break</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Mar 13</td>
+				        <td>Spring break</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 11 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Mar 18</td>
+				        <td></td>
+				        <td>Chapter 7</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Mar 19</td>
+				        <td>Lab 10: Metropolis-Hastings</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Mar 20</td>
+				        <td></td>
+				        <td>Chapter 7</td>
+				        <td></td>
+				        <td><a href="homework/homework07/homework07.pdf" target="_blank">Homework 7</a></td>
+				        <td>Homework 6</td>
+				      </tr>
+
+				      <!-- Week 12 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Mar 25</td>
+				        <td></td>
+				        <td>Chapter 7</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Mar 26</td>
+				        <td>Lab 11:</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Mar 27</td>
+				        <td></td>
+				        <td>Chapter 8</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 13 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Apr 1</td>
+				        <td></td>
+				        <td>Chapter 8</td>
+				        <td></td>
+				        <td><a href="homework/homework08/homework08.pdf" target="_blank">Homework 8</a></td>
+				        <td>Homework 7</td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Apr 2</td>
+				        <td>Lab 12:</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Apr 3</td>
+				        <td></td>
+				        <td>Chapter 8</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 14 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Apr 8</td>
+				        <td></td>
+				        <td>Chapter 9</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Apr 9</td>
+				        <td>Lab 13:</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Apr 10</td>
+				        <td></td>
+				        <td>Chapter 9</td>
+				        <td></td>
+				        <td></td>
+				        <td>Homework 8</td>
+				      </tr>
+
+				      <!-- Week 15 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Apr 15</td>
+				        <td></td>
+				        <td>Chapter 9</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#e6e6e6;">
+				        <td>Thu Apr 16</td>
+				        <td>Lab 14:</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <tr style="background:#ffffff;">
+				        <td>Fri Apr 17</td>
+				        <td></td>
+				        <td>Chapter 10</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				      <!-- Week 16 -->
+				      <tr style="background:#ffffff; border-top:3px solid #000;">
+				        <td>Wed Apr 22</td>
+				        <td>Last class</td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				        <td></td>
+				      </tr>
+
+				    </tbody>
+
+		</table>
+
+
+</body>
+</html>
