@@ -1,0 +1,27 @@
+# macOS junk
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.swp
+*.tmp
+*.bak
+
+# R / RStudio files (if you ever open the folder there)
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
