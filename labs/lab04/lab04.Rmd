@@ -1,0 +1,37 @@
+---
+title: "Lab 4: Monte Carlo"
+output:
+  pdf_document:
+    toc: false
+link-citations: yes
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(tufte)
+library(knitr)
+
+require(tidyverse)
+require(rstanarm)
+require(magrittr)
+require(rstan)
+require(bayesplot)
+require(loo)
+require(readxl)
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  digits = 2
+  )
+#knitr::opts_chunk$set(eval = FALSE)
+
+ggplot2::theme_set(ggplot2::theme_bw())
+knitr::opts_chunk$set(fig.align = 'center')
+```
+
+**Due:** TBD
+
+## Turning in solutions
+
+This lab is part of Homework 3. Solutions to the exercises, as well as the non-lab homework exercises are to be written up and uploaded to Gradescope as a PDF.
