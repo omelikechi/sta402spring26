@@ -25,3 +25,7 @@
 *.nav
 *.snm
 *.vrb
+
+# R Markdown / knitr
+*_cache/
+*_files/
