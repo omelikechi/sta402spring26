@@ -101,7 +101,7 @@
 %-------------------------------------------------------------------
 
 \title{{\large {\Large S}TA402L: {\Large H}omework 2}}
-\author{{\large Due: 11:59 pm on XXX}}
+\author{{\large Due: 11:59 pm on Friday, January 30}}
 
 \begin{document}
 
@@ -111,7 +111,7 @@
 
 \textbf{Instructions.} Solutions must be submitted to Gradescope as a single PDF. Programming exercises must be completed in R, should be clearly presented, and include all R code. Lab questions are restated here for convenience, but you should refer to the lab itself for details.
 
-\textbf{Total points.} Book exercises: XXX; Lab exercises XXX; Overall: XXX.
+\textbf{Total points.} Book exercises: 16; Lab exercises 14; Overall: 30.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -139,6 +139,16 @@
 \item (2 points)
 \end{enumerate}
 
+\item Hoff 3.3.
+
+\vspace*{1em}
+
+\begin{enumerate}[label=(\alph*), leftmargin=1em, itemsep=1em]
+\item (3 points)
+\item (3 points)
+\item (1 point)
+\end{enumerate}
+
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,11 +159,20 @@
 
 \begin{enumerate}[label=L\arabic*., leftmargin=2em, itemsep=2em]
 
-\item (1 point) Plot a histogram of $\theta$ from the \texttt{rstan} object called \texttt{pool\_output}. Describe the distribution.
+\item (2 points) Plot a histogram of $\theta$ from the \texttt{rstan} object called \texttt{pool\_output}. Describe the distribution.
 
-\item Visualize the posterior distributions of the $\theta_i$ with boxplots. In the plot, there should be one box and whiskers object for each $\theta_i$.
+\item (2 points) Visualize the posterior distributions of the $\theta_i$ with boxplots. In the plot, there should be one box and whiskers object for each $\theta_i$.
 
-\item Take a few minutes to look at the contents of the two files \texttt{lab-02-pool.stan} and \texttt{lab-02-nopool.stan}. How are they different?
+\item (2 points) Take a few minutes to look at the contents of the two files \texttt{lab-02-pool.stan} and \texttt{lab-02-nopool.stan}. How are they different?
+
+\item (2 points) What observable quantity does the parameter $a$ represent about our prior beliefs with respect to these data? What does $b$ represent?
+
+\item (2 points) What do we actually observe in the rat tumor data with respect to these quantities?
+
+\item (2 points) How well do our different prior beliefs---the ones represented by the different parameter settings above---match up with the data?
+
+\item (2 points) Why might we have observed such a difference between the two approaches when using the prior
+$\text{Beta}(1,1)$?
 \end{enumerate}
 
 \end{document}
