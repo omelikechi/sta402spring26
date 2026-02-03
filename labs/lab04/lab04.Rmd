@@ -30,8 +30,6 @@ ggplot2::theme_set(ggplot2::theme_bw())
 knitr::opts_chunk$set(fig.align = 'center')
 ```
 
-**Due:** TBD
+**Due:** 11:59 pm on Friday, February 13
 
-## Turning in solutions
-
-This lab is part of Homework 3. Solutions to the exercises, as well as the non-lab homework exercises are to be written up and uploaded to Gradescope as a PDF.
+This week's lab is to work on Homework 3.

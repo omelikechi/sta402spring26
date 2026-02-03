@@ -30,7 +30,7 @@ ggplot2::theme_set(ggplot2::theme_bw())
 knitr::opts_chunk$set(fig.align = 'center')
 ```
 
-**Due:** TBD
+**Due:** 11:59 pm on Friday, February 13
 
 ## Turning in solutions
 
