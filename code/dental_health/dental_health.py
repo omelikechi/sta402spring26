@@ -17,7 +17,7 @@ from scipy.stats import gamma, nbinom
 np.random.seed(302)
 
 show_summary = False
-show_posterior_prediction = False
+show_posterior_prediction = True
 show_model_checking = True
 
 #----------------------------------------------------------------
@@ -195,7 +195,7 @@ if show_model_checking:
 
 	# Posterior predictive check: Proportion with n_unhealthy unhealthy teeth
 	S = 100000
-	n_unhealthy = 0
+	n_unhealthy = 2
 	theta = np.random.gamma(alpha, 1/beta, S)
 	pp_prop = np.empty(S)
 	for i in range(S):
@@ -204,7 +204,6 @@ if show_model_checking:
 
 	empirical_prop = np.mean(y == n_unhealthy)
 
-	# Two-sided posterior predictive p-value
 	proportion_greater = np.mean(pp_prop >= empirical_prop)
 	proportion_less = np.mean(pp_prop <= empirical_prop)
 	print(f'\nObserved proportion with {n_unhealthy} unhealthy teeth: {empirical_prop:.3f}')

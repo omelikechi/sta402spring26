@@ -11,7 +11,7 @@ from scipy.special import gamma
 np.random.seed(302)
 
 # number of samples
-S = 10000
+S = 1000000
 
 # scaling factor
 scale = 1 / np.sqrt(S)
@@ -31,7 +31,7 @@ plot_histograms = False
 scale_historgrams = False
 
 # higher dimensions
-d = 5
+d = 10
 higher_dimensions = True
 plot_dim_vs_vol = False
 
