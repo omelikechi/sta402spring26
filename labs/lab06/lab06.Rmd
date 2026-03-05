@@ -29,9 +29,6 @@ ggplot2::theme_set(ggplot2::theme_bw())
 knitr::opts_chunk$set(fig.align = 'center')
 ```
 
-**Due:** TBD
-
-
 ## Turning in solutions
 
 This lab is part of Homework 5. Solutions to the exercises, as well as the non-lab homework exercises are to be written up and uploaded to Gradescope as a PDF.
@@ -65,7 +62,7 @@ Z
 \end{array}\right)\right].\\
 \end{eqnarray*}
 
-For deriving the conditional distributions needed in the questions below, you should refer to the class slides on the form of conditional normal distributions for any given multivariate normal distribution.
+For deriving the conditional distributions needed in the questions below, you should refer to Chapter 7 of Hoff for the form of conditional normal distributions for any given multivariate normal distribution. See, in particular, the beginning of Section 7.4.
 
 
 ***
