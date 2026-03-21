@@ -14,8 +14,9 @@ np.random.seed(302)
 show_plots = True
 show_animation = False
 
-# frame time (determines animation speed)
-frame_time = 100
+# frame time and step size (determines animation speed)
+frame_time = 50
+step = 1
 
 #----------------------------------------------------------------
 # Simulate data
@@ -29,6 +30,12 @@ y = np.random.normal(theta_true, np.sqrt(sigma2_true), size=n)
 
 # sample mean
 y_bar = np.mean(y)
+
+# print truth
+print(f'Truth')
+print(32*f'-')
+print(f' - theta = {theta_true:.3f}')
+print(f' - sigma^2 = {sigma2_true:.3f}')
 
 #----------------------------------------------------------------
 # Sampling parameters
@@ -120,7 +127,7 @@ def gibbs_sampler(y, S, burn=0):
 theta_gibbs, sigma2_gibbs = gibbs_sampler(y, S)
 
 #----------------------------------------------------------------
-# Metropolis
+# Metropolis with normal or uniform proposal
 #----------------------------------------------------------------
 def log_posterior(theta, sigma2, y):
 
@@ -189,9 +196,6 @@ def metropolis(y, S, proposal_dist='normal', step_size=0.1, burn=0):
 
 theta_mh, sigma2_mh, acc_rate = metropolis(y, S, proposal_dist=proposal_dist, step_size=step_size)
 
-# print(f'Metropolis proposal distribution: {proposal_dist}')
-# print(f'Metropolis acceptance rate: {acc_rate:.3f}')
-
 #----------------------------------------------------------------
 # Posterior summaries and diagnostics
 #----------------------------------------------------------------
@@ -208,9 +212,11 @@ def summarize(name, theta_draws, sigma2_draws, acf_lag=10):
 
 summarize('Gibbs sampler', theta_gibbs, sigma2_gibbs, acf_lag=acf_lag)
 summarize('Metropolis', theta_mh, sigma2_mh, acf_lag=acf_lag)
+print(f'\n')
+print(f'\n')
 
 #----------------------------------------------------------------
-# True posterior density (grid evaluation)
+# True posterior density (approximated via grid evaluation)
 #----------------------------------------------------------------
 # reuse the log_posterior function defined above
 # theta marginal via grid integration
@@ -243,36 +249,36 @@ p_sigma2 /= np.trapezoid(p_sigma2, sigma2_grid)
 # Plots
 #----------------------------------------------------------------
 if show_plots:
-	fig, axes = plt.subplots(2, 3, figsize=(18, 9))
+	fig, axes = plt.subplots(2, 3, figsize=(18,9))
 
 	# theta trace plot (gibbs)
 	axes[0, 0].plot(theta_gibbs, alpha=0.7)
-	axes[0, 0].set_title('Gibbs trace: theta')
+	axes[0, 0].set_title(f'Gibbs: $\\theta$')
 
 	# theta trace plot (metropolis)
 	axes[0, 1].plot(theta_mh, alpha=0.7)
-	axes[0, 1].set_title(f'Metropolis trace: theta ({proposal_dist})')
+	axes[0, 1].set_title(f'Metropolis: $\\theta$ ({proposal_dist} proposal)')
 
 	# sigma^2 trace plot (gibbs)
 	axes[1, 0].plot(sigma2_gibbs, alpha=0.7)
-	axes[1, 0].set_title('Gibbs trace: sigma^2')
+	axes[1, 0].set_title(f'Gibbs: $\\sigma^2$')
 
 	# sigma^2 trace plot (metropolis)
 	axes[1, 1].plot(sigma2_mh, alpha=0.7)
-	axes[1, 1].set_title(f'Metropolis trace: sigma^2 ({proposal_dist})')
+	axes[1, 1].set_title(f'Metropolis: $\\sigma^2$ ({proposal_dist}  proposal)')
 
 	# theta posterior
 	axes[0, 2].hist(theta_gibbs, bins=40, density=True, alpha=0.5, label='Gibbs')
 	axes[0, 2].hist(theta_mh, bins=40, density=True, alpha=0.5, label='Metropolis')
 	axes[0, 2].plot(theta_grid, p_theta, 'k', linewidth=2, label='True density')
-	axes[0, 2].set_title('Posterior of theta')
+	axes[0, 2].set_title(f'Posterior of $\\theta$')
 	axes[0, 2].legend()
 
 	# sigma^2 posterior
 	axes[1, 2].hist(sigma2_gibbs, bins=40, density=True, alpha=0.5, label='Gibbs')
 	axes[1, 2].hist(sigma2_mh, bins=40, density=True, alpha=0.5, label='Metropolis')
 	axes[1, 2].plot(sigma2_grid, p_sigma2, 'k', linewidth=2, label='True density')
-	axes[1, 2].set_title('Posterior of sigma^2')
+	axes[1, 2].set_title(f'Posterior of $\\sigma^2$')
 	axes[1, 2].legend()
 
 	plt.tight_layout()
@@ -284,21 +290,20 @@ if show_plots:
 if show_animation:
 	from matplotlib.animation import FuncAnimation
 
-	step = 100
 	frames = S // step
 
-	fig, axes = plt.subplots(2, 2, figsize=(18, 9))
+	#---------------------------
+	# theta animation
+	#---------------------------
+	fig, axes = plt.subplots(2, 2, figsize=(16,9))
 
 	trace_theta_g, = axes[0, 0].plot([], [])
 	trace_theta_m, = axes[0, 1].plot([], [])
 
-	hist_theta_ax = axes[1, 0]
-	hist_sigma_ax = axes[1, 1]
-
-	axes[0, 0].set_title('Gibbs trace: theta')
-	axes[0, 1].set_title(f'Metropolis trace: theta ({proposal_dist})')
-	axes[1, 0].set_title('Posterior theta')
-	axes[1, 1].set_title('Posterior sigma^2')
+	axes[0, 0].set_title('Gibbs: theta')
+	axes[0, 1].set_title(f'Metropolis: theta ({proposal_dist})')
+	axes[1, 0].set_title('Posterior theta (Gibbs)')
+	axes[1, 1].set_title('Posterior theta (Metropolis)')
 
 	axes[0, 0].set_xlim(0, S)
 	axes[0, 1].set_xlim(0, S)
@@ -306,36 +311,69 @@ if show_animation:
 	axes[0, 0].set_ylim(theta_gibbs.min(), theta_gibbs.max())
 	axes[0, 1].set_ylim(theta_mh.min(), theta_mh.max())
 
-	def update(frame):
-
+	def update_theta(frame):
 		k = frame * step
 
 		trace_theta_g.set_data(np.arange(k), theta_gibbs[:k])
 		trace_theta_m.set_data(np.arange(k), theta_mh[:k])
 
-		hist_theta_ax.cla()
-		hist_sigma_ax.cla()
+		axes[1, 0].cla()
+		axes[1, 1].cla()
 
-		hist_theta_ax.hist(theta_gibbs[:k], bins=40, density=True, alpha=0.5, label='Gibbs')
-		hist_theta_ax.hist(theta_mh[:k], bins=40, density=True, alpha=0.5, label='Metropolis')
-		hist_theta_ax.plot(theta_grid, p_theta, 'k', linewidth=2, label='True density')
-		hist_theta_ax.set_title('Posterior of theta')
-		hist_theta_ax.set_xlabel('theta')
-		hist_theta_ax.set_ylabel('density')
-		hist_theta_ax.legend()
+		axes[1, 0].hist(theta_gibbs[:k], bins=40, density=True, alpha=0.7)
+		# axes[1, 0].plot(theta_grid, p_theta, 'k', linewidth=2)
 
-		hist_sigma_ax.hist(sigma2_gibbs[:k], bins=40, density=True, alpha=0.5, label='Gibbs')
-		hist_sigma_ax.hist(sigma2_mh[:k], bins=40, density=True, alpha=0.5, label='Metropolis')
-		hist_sigma_ax.plot(sigma2_grid, p_sigma2, 'k', linewidth=2, label='True density')
-		hist_sigma_ax.set_title('Posterior of sigma^2')
-		hist_sigma_ax.set_xlabel('sigma^2')
-		hist_sigma_ax.set_ylabel('density')
-		hist_sigma_ax.legend()
+		axes[1, 1].hist(theta_mh[:k], bins=40, density=True, alpha=0.7)
+		# axes[1, 1].plot(theta_grid, p_theta, 'k', linewidth=2)
+
+		axes[1, 0].set_title('Posterior theta (Gibbs)')
+		axes[1, 1].set_title('Posterior theta (Metropolis)')
 
 		return trace_theta_g, trace_theta_m
 
-	anim = FuncAnimation(fig, update, frames=frames, interval=frame_time)
+	anim = FuncAnimation(fig, update_theta, frames=frames, interval=frame_time)
+	plt.show()
 
+	#---------------------------
+	# sigma^2 animation
+	#---------------------------
+	fig, axes = plt.subplots(2, 2, figsize=(16,9))
+
+	trace_sigma2_g, = axes[0, 0].plot([], [])
+	trace_sigma2_m, = axes[0, 1].plot([], [])
+
+	axes[0, 0].set_title('Gibbs: sigma^2')
+	axes[0, 1].set_title(f'Metropolis: sigma^2 ({proposal_dist})')
+	axes[1, 0].set_title('Posterior sigma^2 (Gibbs)')
+	axes[1, 1].set_title('Posterior sigma^2 (Metropolis)')
+
+	axes[0, 0].set_xlim(0, S)
+	axes[0, 1].set_xlim(0, S)
+
+	axes[0, 0].set_ylim(sigma2_gibbs.min(), sigma2_gibbs.max())
+	axes[0, 1].set_ylim(sigma2_mh.min(), sigma2_mh.max())
+
+	def update_sigma2(frame):
+		k = frame * step
+
+		trace_sigma2_g.set_data(np.arange(k), sigma2_gibbs[:k])
+		trace_sigma2_m.set_data(np.arange(k), sigma2_mh[:k])
+
+		axes[1, 0].cla()
+		axes[1, 1].cla()
+
+		axes[1, 0].hist(sigma2_gibbs[:k], bins=40, density=True, alpha=0.7)
+		# axes[1, 0].plot(sigma2_grid, p_sigma2, 'k', linewidth=2)
+
+		axes[1, 1].hist(sigma2_mh[:k], bins=40, density=True, alpha=0.7)
+		# axes[1, 1].plot(sigma2_grid, p_sigma2, 'k', linewidth=2)
+
+		axes[1, 0].set_title('Posterior sigma^2 (Gibbs)')
+		axes[1, 1].set_title('Posterior sigma^2 (Metropolis)')
+
+		return trace_sigma2_g, trace_sigma2_m
+
+	anim = FuncAnimation(fig, update_sigma2, frames=frames, interval=frame_time)
 	plt.show()
 
 

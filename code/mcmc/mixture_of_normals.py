@@ -28,8 +28,8 @@ Target density is a mixture of normal distributions:
 w = 0.5
 
 # component means
-mu_1 = -3
-mu_2 = 3
+mu_1 = -6
+mu_2 = 6
 
 # component standard deviations
 sigma_1 = 1
@@ -54,9 +54,9 @@ acf_lag = 10
 burn = 0
 
 # starting points for separate chains
-x0_left = -6
-x0_right = 6
-x0_center = 0
+x0_left = mu_1
+x0_right = mu_2
+x0_center = (mu_1 + mu_2) / 2
 
 #----------------------------------------------------------------
 # Helper functions
