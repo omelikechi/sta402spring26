@@ -39,8 +39,6 @@ for n in range(n_trajectories):
 ax[0].hist(barS, edgecolor='black', density=True, bins=20)
 ax[1].hist(barX, edgecolor='black', density=True, bins=20)
 
-
-
 plt.tight_layout()
 plt.show()
 
